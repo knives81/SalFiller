@@ -1,0 +1,884 @@
+
+Sub rimuovi_formule()
+'
+    Dim sh As Worksheet
+    For Each sh In ActiveWorkbook.Worksheets
+        With sh.UsedRange
+            .Value = .Value
+        End With
+    Next sh
+    
+End Sub
+
+Sub freeze_avanzamento()
+'
+
+'
+
+'
+
+    Dim myDate As Variant
+    Dim column_Position As Variant
+    Dim row_Position As Variant
+
+    'myDate = InputBox("Inserisci la Data del SAL (gg/mm/aa)")
+    
+    
+    Dim Datesc As String
+    Dim cCVal As String
+    Dim nCVal As String
+    Dim cChr As Integer
+    Dim i As Long
+
+
+    myDate = InputBox("Inserisci la Data del SAL: (gg/mm/aaaa)", , Format(Date, "dd/mm/yy"))
+
+    cCVal = myDate
+    nCVal = ""
+    For i = 1 To Len(cCVal)
+        cChr = Asc(Mid(cCVal, i, 1))
+        If (cChr > 47 And cChr < 58) Then
+            nCVal = nCVal & Chr(cChr)
+        Else
+            nCVal = nCVal & ""
+        End If
+    Next i
+    Datesc = Mid(nCVal, 1, 2) & "/" & Mid(nCVal, 3, 2) & "/" & Mid(nCVal, 5)
+    
+
+        
+  If IsDate(Datesc) Then
+     
+    
+'PianificazionePMO(CA)
+
+    Sheets("PianificazionePMO(CA)").Select
+    'Worksheets("PianificazionePMO(CA)").Activate
+    'Sheets("PianificazionePMO(CA)").Activate
+    
+    
+    'giallo
+    Range("DP4:HO37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    'arancio
+    Range("HS4:LR37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+        
+    'rosso
+    Range("LV4:PU37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    'verde
+    Range("PY4:TX37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+            
+    
+    'verde scuro
+    Range("UB4:YA37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+            
+    'blu
+    Range("YE4:ACD37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+'PianificazionePMO (CFI - TS)
+
+   Sheets("PianificazionePMO(CFI-TS)").Select
+   
+
+  'giallo
+    Range("DP4:HO37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    'arancio
+    Range("HS4:LR37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+        
+    'rosso
+    Range("LV4:PU37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    'verde
+    Range("PY4:TX37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+            
+    
+    'verde scuro
+    Range("UB4:YA37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+            
+    'blu
+    Range("YE4:ACD37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+        
+'PianificazionePMO(CFI-ACN)
+   Sheets("PianificazionePMO(CFI-ACN)").Select
+   
+
+  'giallo
+    Range("DP4:HO37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    'arancio
+    Range("HS4:LR37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+        
+    'rosso
+    Range("LV4:PU37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    'verde
+    Range("PY4:TX37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+            
+    
+    'verde scuro
+    Range("UB4:YA37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+            
+    'blu
+    Range("YE4:ACD37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+ Else
+        MsgBox "Data non conforme!", vbCritical + vbOKOnly, "ATTENZIONE"
+ End If
+End Sub
+Sub cancella_valori_futuri()
+'
+
+'
+
+'
+   
+    
+    
+    Dim myDate As Variant
+    Dim myDateTemp As Date
+    Dim column_Position As Variant
+    Dim row_Position As Variant
+
+    'myDate = InputBox("Inserisci la Data del SAL (gg/mm/aa)")
+    
+    
+    Dim Datesc As String
+    Dim cCVal As String
+    Dim nCVal As String
+    Dim cChr As Integer
+    Dim i As Long
+
+
+    myDate = InputBox("Inserisci la Data del SAL: (gg/mm/aa)", , Format(Date, "dd/mm/yy"))
+
+    cCVal = myDate
+    nCVal = ""
+    For i = 1 To Len(cCVal)
+        cChr = Asc(Mid(cCVal, i, 1))
+        If (cChr > 47 And cChr < 58) Then
+            nCVal = nCVal & Chr(cChr)
+        Else
+            nCVal = nCVal & ""
+        End If
+    Next i
+    Datesc = Mid(nCVal, 1, 2) & "/" & Mid(nCVal, 3, 2) & "/" & Mid(nCVal, 5)
+    
+
+        
+  If IsDate(Datesc) Then
+    
+ 
+    
+'PianificazionePMO(CA)
+
+    Sheets("PianificazionePMO(CA)").Select
+    'Worksheets("PianificazionePMO(CA)").Activate
+    'Sheets("PianificazionePMO(CA)").Activate
+    
+ 
+    'MsgBox myDate
+    
+    'giallo
+    Range("DP4:HO37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+    'arancio
+    Range("HS4:LR37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+        
+    'rosso
+    Range("LV4:PU37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+    'verde
+    Range("PY4:TX37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+            
+    
+    'verde scuro
+    Range("UB4:YA37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+        
+            
+    'blu
+    Range("YE4:ACD37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+
+Sheets("PianificazionePMO(CFI-TS)").Select
+'giallo
+    Range("DP4:HO37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+    'arancio
+    Range("HS4:LR37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+        
+    'rosso
+    Range("LV4:PU37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+    'verde
+    Range("PY4:TX37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+            
+    
+    'verde scuro
+    Range("UB4:YA37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+        
+            
+    'blu
+    Range("YE4:ACD37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+
+ Sheets("PianificazionePMO(CFI-ACN)").Select
+ 'giallo
+    Range("DP4:HO37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+    'arancio
+    Range("HS4:LR37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+        
+    'rosso
+    Range("LV4:PU37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+    'verde
+    Range("PY4:TX37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+            
+    
+    'verde scuro
+    Range("UB4:YA37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+        
+            
+    'blu
+    Range("YE4:ACD37").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Find(What:=myDate, After:=ActiveCell, LookIn:=xlValues, _
+        LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+        MatchCase:=False, SearchFormat:=False).Activate
+    'MsgBox ActiveCell.Row & ", " & ActiveCell.Column
+    column_Position = ActiveCell.Column
+    row_Position = ActiveCell.Row
+    Range(Cells(row_Position + 3, column_Position), Cells(row_Position + 3, column_Position)).Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+ 
+ ' Seleziona sheet
+    Sheets("Cover").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("Sintesi Qualitativa").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("Sintesi Quantitativa (Overall)").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    'Sheets("PianificazionePMO (OverAll)").Select
+    ' Seleziona Celle
+    'Cells.Select
+    ' Copia Celle
+    'Selection.Copy
+    ' Copia Valori
+    'Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("Sintesi (CA)").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("PianificazionePMO(CA)").Select
+    Rows("7:7").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+        
+' Seleziona sheet
+    Sheets("Sintesi (CFI)").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("Sintesi (CFI-TS)").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("PianificazionePMO(CFI-TS)").Select
+    Rows("7:7").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("Sintesi (CFI-ACN)").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("PianificazionePMO(CFI-ACN)").Select
+    Rows("7:7").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("Lista PMO").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("Estrazione ALM").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("ListaAnomalieALL").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("BusinessView-PMOID_Quality").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("chiuse all").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+' Seleziona sheet
+    Sheets("hol").Select
+    ' Seleziona Celle
+    Cells.Select
+    ' Copia Celle
+    Selection.Copy
+    ' Copia Valori
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+  MsgBox "Fine elaborazione"
+
+
+
+ Else
+        MsgBox "Data non conforme!", vbCritical + vbOKOnly, "ATTENZIONE"
+ End If
+    
+End Sub
+
+Sub Step1()
+'
+MsgBox "Refresh Formula"
+Application.CalculateFull
+freeze_avanzamento
+'
+End Sub
+
+Sub Step2()
+'
+MsgBox "Cancello valori e togli formule"
+cancella_valori_futuri
+rimuovi_formule
+'
+End Sub
+
+
+
+
+
+
